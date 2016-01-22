@@ -11,10 +11,78 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160117050011) do
+ActiveRecord::Schema.define(version: 20160122194948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "question_id"
+    t.string   "value"
+    t.string   "options"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
+
+  create_table "questions", force: :cascade do |t|
+    t.integer  "test_id"
+    t.string   "si_no"
+    t.string   "subject"
+    t.string   "topic"
+    t.string   "question_type"
+    t.string   "difficulty"
+    t.string   "question"
+    t.string   "option1"
+    t.string   "option2"
+    t.string   "option3"
+    t.string   "option4"
+    t.string   "concepts"
+    t.string   "answer_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "questions", ["test_id"], name: "index_questions_on_test_id", using: :btree
+
+  create_table "test_questions", force: :cascade do |t|
+    t.integer  "test_id"
+    t.integer  "question_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "test_questions", ["question_id"], name: "index_test_questions_on_question_id", using: :btree
+  add_index "test_questions", ["test_id"], name: "index_test_questions_on_test_id", using: :btree
+
+  create_table "test_responses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "test_id"
+    t.integer  "question_id"
+    t.string   "answer_options"
+    t.string   "answer_value"
+    t.float    "answer_time"
+    t.float    "answer_score"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "test_responses", ["question_id"], name: "index_test_responses_on_question_id", using: :btree
+  add_index "test_responses", ["test_id"], name: "index_test_responses_on_test_id", using: :btree
+  add_index "test_responses", ["user_id"], name: "index_test_responses_on_user_id", using: :btree
+
+  create_table "tests", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "is_timed",   default: false
+    t.integer  "timeout"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

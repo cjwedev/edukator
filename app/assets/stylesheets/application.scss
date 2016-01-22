@@ -1,0 +1,17 @@
+// import Bootstrap
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+// Core variables and mixins
+@import "variables";
+@import "mixins";
+
+// Base styles over the all pages
+@import "base";
+
+// specific styles
+@import "1st_load_framework";
+@import "modern-business";
+
+@import "tests";
+

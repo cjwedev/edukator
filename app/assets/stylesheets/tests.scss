@@ -1,0 +1,38 @@
+$qmark-width: 40px;
+
+.q-no-section {
+  width: $qmark-width;
+
+  .q-no-circle {
+    width: $qmark-width;
+    height: $qmark-width;
+    border-radius: $qmark-width;
+    border: 1px solid $c-main-black;
+    text-align: center;
+
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 18px;
+    font-weight: bold;
+    color: $c-main-black;
+  }
+
+  .q-total-count {
+    text-align: center;
+    color: #FD9B51;
+  }
+}
+
+.q-section {
+  margin-left: 15px;
+  width: calc(100% - #{$qmark-width} - 15px);
+
+  .q-question-type {
+    color: #666;
+    font-weight: bold;
+  }
+
+  .q-question-desc {
+    color: $c-gray-text;
+  }
+}
