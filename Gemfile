@@ -8,6 +8,8 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 group :development, :test do
   gem 'byebug'
+  gem 'pry'
+  gem 'pry-nav'
 end
 group :development do
   gem 'web-console', '~> 2.0'
